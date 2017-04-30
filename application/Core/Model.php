@@ -113,6 +113,7 @@ class Model
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
         $query->execute($parameters);
+        return $this->db->lastInsertId();
     }
 
     public function delete($id)

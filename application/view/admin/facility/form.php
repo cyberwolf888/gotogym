@@ -16,7 +16,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="<?= URL ?>admin/category">Category</a>
+        <a href="<?= URL ?>admin/facility">Facility</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="portlet-body form">
-                <form action=" <?= isset($model) ? URL.'admin/process_edit_category/'.$model->id : URL.'admin/process_create_category' ?>" method="post">
+                <form action=" <?= isset($model) ? URL.'admin/process_edit_facility/'.$model->id : URL.'admin/process_create_facility' ?>" method="post">
                     <div class="form-body">
 
                         <div class="form-group form-md-line-input">

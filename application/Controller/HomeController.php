@@ -3,7 +3,11 @@
 namespace Mini\Controller;
 
 
-class HomeController
+use Mini\Core\Controller;
+use Mini\Model\Gym;
+use Mini\Model\Users;
+
+class HomeController extends Controller
 {
 
     public function index()
@@ -16,25 +20,40 @@ class HomeController
 
     public function login()
     {
-        require APP . 'view/_templates/admin_header.php';
-        require APP . 'view/home/index.php';
-        require APP . 'view/_templates/admin_footer.php';
+        $this->view([
+            'content'=>'view/home/login.php'
+        ]);
     }
 
-
-    public function exampleOne()
+    public function proses_login()
     {
-        // load views
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/example_one.php';
-        require APP . 'view/_templates/footer.php';
+        if(isset($_POST['username']))
+        {
+            $_user = new Users();
+            $user = $_user->getOne(['username'=>$_POST['username'],'password'=>md5($_POST['password'])]);
+            if($user){
+                $_SESSION['user'] = $user;
+
+                if($user->type == 1){
+                    header('location: ' . URL . 'admin');
+                }
+
+                if($user->type == 2){
+                    $_gym = new Gym();
+                    $gym = $_gym->getOne(['user_id'=>$user->id]);
+                    $_SESSION['gym'] = $gym;
+                    header('location: ' . URL . 'operator');
+                }
+            }else{
+                $this->flash('error_login', '<b>Failed to login. </b>Username or password is invalid.', 'alert-danger' );
+                header('location: ' . URL . 'home/login');
+            }
+        }
     }
 
-    public function exampleTwo()
+    public function logout()
     {
-        // load views
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/example_two.php';
-        require APP . 'view/_templates/footer.php';
+        unset($_SESSION['user']);
+        header('location: ' . URL . 'home/login');
     }
 }

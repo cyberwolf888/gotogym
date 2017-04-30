@@ -28,9 +28,9 @@
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <?php
-    if(isset($plugin_script)){
-        require $plugin_script;
-    }
+if(isset($plugin_script)){
+    require $plugin_script;
+}
 ?>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->

@@ -2,7 +2,7 @@
 <div class="page-head">
     <!-- BEGIN PAGE TITLE -->
     <div class="page-title">
-        <h1>Category
+        <h1>Facility
             <small>Manage</small>
         </h1>
     </div>
@@ -16,7 +16,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="<?= URL ?>admin/category">Category</a>
+        <a href="<?= URL ?>admin/category">Facility</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -32,11 +32,11 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-green"></i>
-                    <span class="caption-subject font-green sbold uppercase">Manage Category</span>
+                    <span class="caption-subject font-green sbold uppercase">Manage Facility</span>
                 </div>
                 <div class="actions">
                     <div class="btn-group btn-group-devided">
-                        <a href="<?= URL ?>admin/create_category" class="btn btn-circle green">
+                        <a href="<?= URL ?>admin/create_facility" class="btn btn-circle green">
                             <i class="fa fa-plus"></i> Add new data
                         </a>
                     </div>
@@ -89,7 +89,7 @@
                             <td> <?= $row->label ?> </td>
                             <td class="center" width="150" >
                                 <a href="#" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
-                                <a href="<?= URL ?>admin/edit_category/<?= $row->id ?>" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
+                                <a href="<?= URL ?>admin/edit_facility/<?= $row->id ?>" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>

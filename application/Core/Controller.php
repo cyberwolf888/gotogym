@@ -37,4 +37,40 @@ class Controller
         if(isset($data['footer']))
             require APP . $data['footer'];
     }
+
+    protected function flash( $name = '', $message = '', $class = 'alert-success' )
+    {
+        //We can only do something if the name isn't empty
+        if( !empty( $name ) )
+        {
+            //No message, create it
+            if( !empty( $message ) && empty( $_SESSION[$name] ) )
+            {
+                if( !empty( $_SESSION[$name] ) )
+                {
+                    unset( $_SESSION[$name] );
+                }
+                if( !empty( $_SESSION[$name.'_class'] ) )
+                {
+                    unset( $_SESSION[$name.'_class'] );
+                }
+
+                $_SESSION[$name] = $message;
+                $_SESSION[$name.'_class'] = $class;
+            }
+            //Message exists, display it
+            elseif( !empty( $_SESSION[$name] ) && empty( $message ) )
+            {
+                $class = !empty( $_SESSION[$name.'_class'] ) ? $_SESSION[$name.'_class'] : 'alert-success';
+
+                //echo '<div class="'.$class.'" id="msg-flash">'.$_SESSION[$name].'</div>';
+                echo '<div class="alert alert-block '.$class.' fade in">';
+                echo '<button type="button" class="close" data-dismiss="alert"></button>';
+                echo '<p>'.$_SESSION[$name].'</p>';
+                echo '</div>';
+                unset($_SESSION[$name]);
+                unset($_SESSION[$name.'_class']);
+            }
+        }
+    }
 }

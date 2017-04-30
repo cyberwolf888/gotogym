@@ -17,7 +17,7 @@
  *
  * For more info about namespaces plase @see http://php.net/manual/en/language.namespaces.importing.php
  */
-
+if( !session_id() ) @session_start();
 // set a constant that holds the project's folder path, like "/var/www/".
 // DIRECTORY_SEPARATOR adds a slash to the end of the path
 define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);

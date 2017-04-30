@@ -152,37 +152,17 @@
                 <li class="heading">
                     <h3 class="uppercase">Features</h3>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= URL;?>admin/category" class="nav-link ">
-                        <i class="icon-rocket"></i>
-                        <span class="title">Category</span>
-                    </a>
-                </li>
                 <li class="nav-item ">
-                    <a href="<?= URL;?>admin/facility" class="nav-link ">
+                    <a href="<?= URL;?>operator/facility" class="nav-link ">
                         <i class="icon-book-open"></i>
                         <span class="title">Facility</span>
                     </a>
                 </li>
-
-                <li class="nav-item ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-users"></i>
-                        <span class="title">User</span>
-                        <span class="arrow"></span>
+                <li class="nav-item">
+                    <a href="<?= URL;?>operator/images" class="nav-link ">
+                        <i class="icon-rocket"></i>
+                        <span class="title">Images</span>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="<?= URL;?>admin/user_operator" class="nav-link ">
-                                <span class="title">Operator</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= URL;?>admin/user_admin" class="nav-link ">
-                                <span class="title">Admin</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
             </ul>

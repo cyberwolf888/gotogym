@@ -2,8 +2,8 @@
 <div class="page-head">
     <!-- BEGIN PAGE TITLE -->
     <div class="page-title">
-        <h1>Category
-            <small>Manage</small>
+        <h1>Facility
+            <small>Create</small>
         </h1>
     </div>
     <!-- END PAGE TITLE -->
@@ -12,11 +12,11 @@
 <!-- BEGIN PAGE BREADCRUMB -->
 <ul class="page-breadcrumb breadcrumb">
     <li>
-        <a href="<?= URL ?>admin">Home</a>
+        <a href="<?= URL ?>operator">Home</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="<?= URL ?>admin/category">Category</a>
+        <a href="<?= URL ?>operator/facility">Facility</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -38,12 +38,17 @@
             </div>
 
             <div class="portlet-body form">
-                <form action=" <?= isset($model) ? URL.'admin/process_edit_category/'.$model->id : URL.'admin/process_create_category' ?>" method="post">
+                <form action=" <?= isset($model) ? URL.'operator/process_edit_facility/'.$model->id : URL.'operator/process_create_facility' ?>" method="post">
                     <div class="form-body">
 
                         <div class="form-group form-md-line-input">
-                            <input type="text" name="label" id="label" placeholder="" class="form-control" value="<?= isset($model) ? $model->label : null ?>" required>
-                            <label for="label">Label Category</label>
+                            <select name="facility_id" id="facility_id" class="form-control" required>
+                                <?php $facility = new \Mini\Model\Facility(); ?>
+                                <?php foreach ($facility->getAll() as $row): ?>
+                                <option value="<?= $row->id ?>"><?= $row->label ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <label for="facility_id">Facility</label>
                         </div>
 
                     </div>
