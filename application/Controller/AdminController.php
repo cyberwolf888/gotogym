@@ -6,6 +6,7 @@ use Mini\Core\Controller;
 use Mini\Model\Category;
 use Mini\Model\Facility;
 use Mini\Model\Gym;
+use Mini\Model\Images;
 use Mini\Model\Users;
 
 class AdminController extends Controller
@@ -26,7 +27,23 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $facility = new Facility();
+        $count_facility = count($facility->getAll());
+        $user = new Users();
+        $count_operator = count($user->getAll(['type'=>2]));
 
+        $this->view([
+            'header'=>'view/_templates/admin_header.php',
+            'content'=>'view/admin/dashboard/index.php',
+            'footer'=>'view/_templates/admin_footer.php',
+            //'plugin_css'=>'view/admin/category/script/manage_plugin_css.php',
+            'plugin_script'=>'view/admin/dashboard/script/plugin_script.php',
+            'page_script'=>'view/admin/dashboard/script/page_script.php'
+        ], [
+            'count_facility'=>$count_facility,
+            'count_operator'=>$count_operator,
+            'user'=>$user
+        ]);
     }
     /* -------------------------------------------------------------------------------------------------------------- */
 
@@ -378,14 +395,21 @@ class AdminController extends Controller
         $user = new Users();
         $model = $user->getOne($id);
         $gym = new Gym();
+        $images = new Images();
 
-        $this->view([
+        $view = [
             'header'=>'view/_templates/admin_header.php',
             'content'=>'view/admin/user_operator/show.php',
-            'footer'=>'view/_templates/admin_footer.php'
-        ], [
+            'footer'=>'view/_templates/admin_footer.php',
+            'page_css' => 'view/admin/user_operator/script/show_page_css.php',
+            'page_script' => 'view/admin/user_operator/script/show_page_script.php',
+            'plugin_css' => 'view/admin/user_operator/script/show_plugin_css.php',
+            'plugin_script' => 'view/admin/user_operator/script/show_plugin_script.php',
+        ];
+        $this->view($view, [
             'model'=>$model,
-            'gym'=>$gym->getOne(['user_id' => $id])
+            'gym'=>$gym->getOne(['user_id' => $id]),
+            'images'=>$images
         ]);
     }
     /* -------------------------------------------------------------------------------------------------------------- */

@@ -14,4 +14,13 @@ class Users extends Model
 
         return $status[$id];
     }
+
+    public function getLastOperator()
+    {
+        $sql = "SELECT * FROM users WHERE type = 2 ORDER BY id DESC LIMIT 5";
+        $query = $this->db->prepare($sql);
+        $parameters=array();
+        $query->execute($parameters);
+        return $query->fetchAll();
+    }
 }

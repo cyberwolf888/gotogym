@@ -131,6 +131,7 @@ class OperatorController extends Controller
             'footer' => 'view/_templates/operator_footer.php',
             'plugin_css' => 'view/operator/images/script/manage_plugin_css.php',
             'plugin_script' => 'view/operator/images/script/manage_plugin_script.php',
+            'page_css' => 'view/operator/images/script/manage_page_css.php',
             'page_script' => 'view/operator/images/script/manage_page_script.php'
         ], [
             'model' => $model->getAll(['gym_id'=>$_SESSION['gym']->id])
@@ -221,7 +222,19 @@ class OperatorController extends Controller
 
     public function delete_images($id)
     {
+        $model = new Images();
+        $img = $model->getOne($id);
 
+        $target_dir = "img/gym/";
+
+        if(is_file($target_dir.$img->file)){
+            unlink($target_dir.'thumb_'.$img->file);
+            unlink($target_dir.$img->file);
+        }
+
+        $model->delete($id);
+
+        header('location: ' . URL . 'operator/images');
     }
 
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 Apr 2017 pada 15.23
+-- Generation Time: 01 Mei 2017 pada 05.47
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -86,7 +86,8 @@ CREATE TABLE `gym` (
 --
 
 INSERT INTO `gym` (`id`, `user_id`, `category_id`, `fullname`, `alamat`, `longitude`, `latitude`, `telp`, `description`, `price`, `status`) VALUES
-(1, 2, 1, 'Awesome Gym', 'Jl. Gn. Agung No.225, Padangsambian, Denpasar Bar., Kota Denpasar, Bali 80118, Indonesia', '115.190703', '-8.651285', '085737353568', 'Gym terbaik dan terhebat disekitar denpasar\r\nhahahaha', 100000, 1);
+(1, 2, 1, 'Awesome Gym', 'Jl. Gn. Agung No.225, Padangsambian, Denpasar Bar., Kota Denpasar, Bali 80118, Indonesia', '115.190703', '-8.651285', '085737353568', 'Gym terbaik dan terhebat disekitar denpasar\r\nhahahaha', 100000, 1),
+(2, 3, 2, 'Tempat Yoga Asik', NULL, NULL, NULL, NULL, NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,11 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `gym_id`, `file`) VALUES
-(1, 1, '9d92d81779c29ace58dd332ec7adfde0.jpg');
+(10, 1, 'f54c6ff73df3656a1d9f46ce41d98d9c.jpg'),
+(11, 1, 'ba97eafd36eaa445f1a794521db7ab4e.jpg'),
+(12, 1, 'a9fa60d08cb4adb43be0573f471e8d28.jpg'),
+(13, 1, 'b8fb4844a7f2ac8be8f422e1968dcda7.jpg'),
+(14, 1, '0b8c245f5d0b260ddc13c8bbc6e88216.jpg');
 
 -- --------------------------------------------------------
 
@@ -149,7 +154,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fullname`, `username`, `password`, `no_hp`, `type`, `status`) VALUES
 (1, 'Administrator', 'admin', '7fef6171469e80d32c0559f88b377245', '08573737437', 1, 1),
-(2, 'Awesome Gym', 'operator', '100d9d509794db4ff7fd800bdc659dad', '085737353568', 2, 1);
+(2, 'Awesome Gym', 'operator', '100d9d509794db4ff7fd800bdc659dad', '085737353568', 2, 1),
+(3, 'Tempat Yoga Asik', 'yoga', '8bd400413bffe4af08d8a6608fda8bad', '085737353569', 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -209,22 +215,22 @@ ALTER TABLE `facility`
 -- AUTO_INCREMENT for table `gym`
 --
 ALTER TABLE `gym`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `gym_facility`
 --
 ALTER TABLE `gym_facility`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

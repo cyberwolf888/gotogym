@@ -51,7 +51,7 @@
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="<?= URL;?>admin">
+            <a href="<?= URL;?>operator">
                 <img src="<?= URL;?>assets/backend/layouts/layout4/img/logo.png" alt="logo" class="" style="margin-top: 10px;"/> </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -144,7 +144,7 @@
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li class="nav-item start ">
-                    <a href="#" class="nav-link ">
+                    <a href="<?= URL;?>operator" class="nav-link ">
                         <i class="icon-home"></i>
                         <span class="title">Dashboard</span>
                     </a>

@@ -32,7 +32,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-green"></i>
-                    <span class="caption-subject font-green sbold uppercase">Manage Facility</span>
+                    <span class="caption-subject font-green sbold uppercase">Manage Images</span>
                 </div>
                 <div class="actions">
                     <div class="btn-group btn-group-devided">
@@ -43,17 +43,18 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <?php $line = 0; foreach ($model as $key=>$row): ?>
-                    <?php if($key == $line): ?>
-                        <div class="row">
-                    <?php  $line+=3; endif; ?>
-                            <div class="col-md-3">
-                                <img src="<?= URL.'img/gym/thumb_'.$row->file ?>" class="img-responsive">
-                            </div>
-                    <?php if($key == $line): ?>
-                        <div class="row">
-                    <?php $line+=3;endif; ?>
-                <?php endforeach; ?>
+                <div class="row zoom-gallery">
+                    <?php foreach ($model as $key=>$row): ?>
+                        <div class="col-md-3" style="margin-bottom: 15px;">
+                            <a href="<?= URL.'img/gym/'.$row->file ?>" data-source="<?= URL.'img/gym/'.$row->file ?>">
+                                <img src="<?= URL.'img/gym/thumb_'.$row->file ?>" class="img-responsive" style="margin-bottom: 5px;">
+                            </a>
+
+                            <button class="btn btn-danger btn-small" onclick="window.location='<?= URL.'operator/delete_images/'.$row->id ?>'"><i class="fa fa-trash"></i>Delete</button>
+                            <!-- <a class="btn btn-danger btn-small" href="<?= URL.'operator/delete_images/'.$row->id ?>"><i class="fa fa-trash"></i>Delete</a> -->
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div> <!-- end portlet-body -->
         </div>
         <!-- End: life time stats -->

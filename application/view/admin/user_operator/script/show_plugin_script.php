@@ -1,0 +1,1 @@
+<script src="<?= URL;?>/assets/backend/global/plugins/magnific-popup/dist/jquery.magnific-popup.js"></script>

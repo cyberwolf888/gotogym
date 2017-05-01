@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="<?= URL;?>/assets/backend/global/plugins/magnific-popup/dist/magnific-popup.css">
