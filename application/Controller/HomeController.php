@@ -13,9 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         // load views
-        //require APP . 'view/_templates/header.php';
-        //require APP . 'view/home/index.php';
-        //require APP . 'view/_templates/footer.php';
+        require APP . 'view/home/index.php';
     }
 
     public function login()
@@ -49,6 +47,11 @@ class HomeController extends Controller
                 header('location: ' . URL . 'home/login');
             }
         }
+    }
+
+    public function detail($id)
+    {
+        echo $id;
     }
 
     public function logout()

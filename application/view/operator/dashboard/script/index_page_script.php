@@ -108,36 +108,11 @@
         var myMarker = new google.maps.Marker({
             position: gym_location,
             draggable: true,
-            title: '<?= $_SESSION['gym']->fullname ?>',
-            //icon: 'http://www.myiconfinder.com/uploads/iconsets/256-256-6096188ce806c80cf30dca727fe7c237.png',
+            icon: '<?= URL;?>assets/frontend/images/marker.png',
             animation: google.maps.Animation.DROP,
             map: map
         });
 
-        <?php for ($i=1; $i<=10; $i++): ?>
-        var myMarker<?= $i ?> = new google.maps.Marker({
-            position: new google.maps.LatLng(-8.655952, 115.21<?= $i ?>967),
-            draggable: false,
-            title: '<?= $_SESSION['gym']->fullname ?>',
-            map: map
-        });
-
-        var infowindow<?= $i ?> = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        myMarker<?= $i ?>.addListener('click', function() {
-            infowindow<?= $i ?>.open(map, myMarker<?= $i ?>);
-        });
-
-        myMarker<?= $i ?>.addListener('mouseover', function() {
-            infowindow<?= $i ?>.open(map, myMarker<?= $i ?>);
-        });
-
-        myMarker<?= $i ?>.addListener('mouseout', function() {
-            infowindow<?= $i ?>.close();
-        });
-        <?php endfor; ?>
 
         google.maps.event.addListener(myMarker, 'dragend', function (evt) {
             //document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(6) + ' Current Lng: ' + evt.latLng.lng().toFixed(6) + '</p>';

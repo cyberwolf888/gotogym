@@ -21,4 +21,17 @@ class Gym extends Model
 
         return $status[$id];
     }
+
+    public static function getImage($id)
+    {
+        $images = new Images();
+        $img = $images->getOne(['gym_id'=>$id]);
+
+        if($img){
+            return $img->file;
+        }else{
+            return '';
+        }
+    }
+
 }

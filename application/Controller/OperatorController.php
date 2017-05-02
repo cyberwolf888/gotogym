@@ -42,7 +42,7 @@ class OperatorController extends Controller
             $user = new Users();
             $gym = new Gym();
 
-            $gym->update([
+            $update = [
                 'fullname' => $_POST['fullname'],
                 'alamat' => $_POST['alamat'],
                 'longitude' => $_POST['longitude'],
@@ -50,7 +50,13 @@ class OperatorController extends Controller
                 'telp' => $_POST['telp'],
                 'description' => $_POST['description'],
                 'price' => $_POST['price']
-            ], $_SESSION['gym']->id);
+            ];
+
+            if($_SESSION['gym']->status == 3){
+                $update['status'] = 1;
+            }
+
+            $gym->update($update, $_SESSION['gym']->id);
 
             $data_user = [
                 'fullname' => $_POST['fullname'],
