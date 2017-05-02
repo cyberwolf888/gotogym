@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Mei 2017 pada 05.47
+-- Generation Time: 02 Mei 2017 pada 09.39
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -87,7 +87,7 @@ CREATE TABLE `gym` (
 
 INSERT INTO `gym` (`id`, `user_id`, `category_id`, `fullname`, `alamat`, `longitude`, `latitude`, `telp`, `description`, `price`, `status`) VALUES
 (1, 2, 1, 'Awesome Gym', 'Jl. Gn. Agung No.225, Padangsambian, Denpasar Bar., Kota Denpasar, Bali 80118, Indonesia', '115.190703', '-8.651285', '085737353568', 'Gym terbaik dan terhebat disekitar denpasar\r\nhahahaha', 100000, 1),
-(2, 3, 2, 'Tempat Yoga Asik', NULL, NULL, NULL, NULL, NULL, NULL, 3);
+(2, 3, 2, 'Tempat Yoga Asik', 'Jl. Raya Puputan No.74, Dangin Puri Klod, Denpasar Tim., Kota Denpasar, Bali 80234, Indonesia', '115.225379', '-8.672668', '085737364736', 'Tempat yoga paling asik di Bali', 150000, 1);
 
 -- --------------------------------------------------------
 
@@ -155,7 +155,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `fullname`, `username`, `password`, `no_hp`, `type`, `status`) VALUES
 (1, 'Administrator', 'admin', '7fef6171469e80d32c0559f88b377245', '08573737437', 1, 1),
 (2, 'Awesome Gym', 'operator', '100d9d509794db4ff7fd800bdc659dad', '085737353568', 2, 1),
-(3, 'Tempat Yoga Asik', 'yoga', '8bd400413bffe4af08d8a6608fda8bad', '085737353569', 2, 1);
+(3, 'Tempat Yoga Asik', 'yoga', '8bd400413bffe4af08d8a6608fda8bad', '085737364736', 2, 1);
 
 --
 -- Indexes for dumped tables
