@@ -42,20 +42,21 @@ jQuery(function($) {
     jQuery("#adminForm_1").submit(function() {
         
         if(IsEmail(jQuery("#aics_email").val())){
-            var url = "mail.php"; // the mail script
+            var url = "mail"; // the mail script
 
             jQuery.ajax({
                     type: "POST",
                     url: url,
                     data: jQuery("#adminForm_1").serialize()+"&tm_form=1", // serializes the form's elements.
                     success: function(data) {
-                        alert(data); // show response from the php script.
+                        //alert(data); // show response from the php script.
+                        $(".pesan").show();
                     }
                 });
 
             jQuery(this)[0].reset();//Clear all form fields
         }else{
-            alert("Please fill all fields.");
+            alert("Mohon masukan data pada formulir dengan benar.");
         }
         
         return false; // avoid to execute the actual submit of the form.
@@ -66,14 +67,15 @@ jQuery(function($) {
     jQuery("#adminForm_2").submit(function() {
 
         if(IsEmail(jQuery("#aics_email_ph").val())){
-            var url = "mail.php"; // the mail script
+            var url = "mail"; // the mail script
 
             jQuery.ajax({
                     type: "POST",
                     url: url,
                     data: jQuery("#adminForm_2").serialize()+"&tm_form=2", // serializes the form's elements.
                     success: function(data) {
-                        alert(data); // show response from the php script.
+                        //alert(data); // show response from the php script.
+                        $(".pesan").show();
                     }
                 });
 

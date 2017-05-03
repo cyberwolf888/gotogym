@@ -5,9 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="With unique design and accent in details Maxx Fitness is perfect template. Design have beautiful typography and elegant structure. HTML Template is based on Warp7 Framework and made for all who wants a lightweight and modular website.">
 
-    <title>Home - Maxx Fitness HTML Template</title>
+    <title>GO TO GYM</title>
 
     <!-- Favicon and Apple icon -->
     <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
@@ -24,15 +23,15 @@
     <nav class="tm-navbar uk-navbar">
         <div class="uk-container uk-container-center">
             <!-- START Logo -->
-            <a class="tm-logo" href="index-2.html">
+            <a class="tm-logo" href="<?= URL;?>">
                 <!-- <span class="color-1">GO TO </span><span class="color-2">GYM</span> -->
                 <img src="<?= URL;?>assets/frontend/images/logo.png" style="margin-top: 10px;">
             </a>
             <!-- END Logo -->
             <ul class="uk-navbar-nav uk-hidden-small">
                 <li class="uk-parent uk-active"><a href="<?= URL ?>">Home</a></li>
-                <li><a href="<?= URL ?>">New Facility</a></li>
-                <li><a href="contacts.html">Contact</a></li>
+                <li><a href="<?= URL.'home/newfacility' ?>">New Facility</a></li>
+                <li><a href="<?= URL.'home/contact' ?>">Contact</a></li>
                 <li><a href="<?= URL.'home/login' ?>"">Login</a></li>
             </ul>
             <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas=""></a>
@@ -62,17 +61,17 @@
                                     <!-- START Feature 1 -->
                                     <div class="uk-overlay tm-overlay uk-width-1-1">
                                         <div class="uk-panel uk-panel-box" style="padding: 30px">
-                                            <form class="uk-form">
+                                            <form class="uk-form" action="<?= URL.'home/search' ?>" method="get">
 
                                                 <fieldset data-uk-margin>
-                                                    <input type="text" placeholder="Search..." class="uk-form-large uk-width-5-10" >
-                                                    <select class="uk-form-large uk-width-3-10">
+                                                    <input type="text" name="keyword" placeholder="Search..." class="uk-form-large uk-width-5-10" >
+                                                    <select name="category" class="uk-form-large uk-width-3-10">
                                                         <option value="0">All Category</option>
                                                         <?php $category = new \Mini\Model\Category(); foreach ($category->getAll() as $cat): ?>
                                                             <option value="<?= $cat->id ?>"><?= $cat->label ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
-                                                    <button class="uk-button uk-form-large uk-width-1-10" style="height: 40px;">Search</button>
+                                                    <button class="uk-button uk-form-large uk-width-1-10 uk-button-primary" style="height: 40px;">Search</button>
                                                 </fieldset>
 
                                             </form>
@@ -152,52 +151,6 @@
     </div>
     <!-- END Footer block -->
 
-    <!-- START Mobile menu block -->
-    <div id="offcanvas" class="uk-offcanvas">
-        <div class="uk-offcanvas-bar">
-            <ul class="uk-nav uk-nav-offcanvas">
-                <li class="uk-parent uk-active">
-                    <a href="#">Home</a>
-                    <ul class="uk-nav-sub">
-                        <li class="uk-parent">
-                            <a href="#">Color Variations</a>
-                            <ul>
-                                <li><a href="index.html">Default style</a></li>
-                                <li><a href="../demo-4/index.html">Orange style</a></li>
-                                <li><a href="../demo-5/index.html">Green Style</a></li>
-                                <li><a href="../demo-6/index.html">Red Style</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="layouts.html">Modules Positions</a></li>
-                        <li><a href="coming-soon-page.html">Coming Soon / Offline Page</a></li>
-                        <li><a href="error.html">Error page</a></li>
-                    </ul>
-                </li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li class="uk-parent">
-                    <a href="classes.html">Classes</a>
-                    <ul class="uk-nav-sub">
-                        <li><a href="#">Weight Loss</a></li>
-                        <li><a href="classes/swimming.html">Swimming</a></li>
-                        <li><a href="classes/swimming.html">Kickboxing</a></li>
-                        <li><a href="classes/swimming.html">Cross Trainer</a></li>
-                        <li><a href="#">Muscle Gain</a></li>
-                        <li><a href="classes/swimming.html">Fast Bodyweight</a></li>
-                        <li><a href="classes/swimming.html">Pilates</a></li>
-                        <li><a href="classes/swimming.html">Boxing</a></li>
-                    </ul>
-                </li>
-                <li><a href="workouts.html">Workouts</a></li>
-                <li><a href="trainers.html">Trainers</a></li>
-                <li><a href="store.html">Store</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contacts.html">Locations</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- END Mobile menu block -->
-
 </div>
 
 <script src="<?= URL;?>assets/frontend/js/jquery.min.js" type="text/javascript"></script><!-- jQuery v1.11.2 -->
@@ -220,7 +173,6 @@
 <!-- END Schedule block -->
 
 <!-- Template scripts -->
-<script src="<?= URL;?>assets/frontend/js/script.js" type="text/javascript"></script>
 <script src="<?= URL;?>assets/frontend/js/script.js" type="text/javascript"></script>
 
 <script>
