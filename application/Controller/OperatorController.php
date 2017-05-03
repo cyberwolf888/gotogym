@@ -162,6 +162,7 @@ class OperatorController extends Controller
         $uploadOk = 1;
         $imageFileType = pathinfo($chace_file,PATHINFO_EXTENSION);
 
+        /*
         // Check if image file is a actual image or fake image
         if(isset($_POST["bedebah"])) {
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -182,6 +183,7 @@ class OperatorController extends Controller
             $this->flash('error_images', 'Sorry, your file is too large.', 'alert-danger' );
             $uploadOk = 0;
         }
+        */
         // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
