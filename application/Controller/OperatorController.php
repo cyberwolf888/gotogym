@@ -162,6 +162,9 @@ class OperatorController extends Controller
         $uploadOk = 1;
         $imageFileType = pathinfo($chace_file,PATHINFO_EXTENSION);
 
+        if (!file_exists("img/chace/")) {
+            mkdir("img/chace/");
+        }
         /*
         // Check if image file is a actual image or fake image
         if(isset($_POST["bedebah"])) {
