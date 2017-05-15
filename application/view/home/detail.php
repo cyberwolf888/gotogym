@@ -19,7 +19,7 @@
                 <!-- START Article Blog block -->
                 <article class="uk-article">
                     <h3>
-                        <?= \Mini\Model\Gym::getCategory($model->id) ?>
+                        <?= \Mini\Model\Gym::getCategory($model->category_id) ?>
                     </h3>
                     <div>
                         <div class="uk-grid">
