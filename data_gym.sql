@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Mei 2017 pada 07.20
+-- Generation Time: 07 Jul 2017 pada 09.02
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -59,7 +59,8 @@ INSERT INTO `facility` (`id`, `label`) VALUES
 (1, 'Free Wifi'),
 (2, 'Jacuzi'),
 (3, 'Swimming Pool'),
-(4, 'Smoking Area');
+(4, 'Smoking Area'),
+(5, 'Sauna');
 
 -- --------------------------------------------------------
 
@@ -86,8 +87,9 @@ CREATE TABLE `gym` (
 --
 
 INSERT INTO `gym` (`id`, `user_id`, `category_id`, `fullname`, `alamat`, `longitude`, `latitude`, `telp`, `description`, `price`, `status`) VALUES
-(1, 2, 1, 'Awesome Gym', 'Jl. Gn. Agung No.225, Padangsambian, Denpasar Bar., Kota Denpasar, Bali 80118, Indonesia', '115.190703', '-8.651285', '085737353568', 'Gym terbaik dan terhebat disekitar denpasar\r\nhahahaha', 100000, 1),
-(2, 3, 2, 'Tempat Yoga Asik', 'Jl. Raya Puputan No.74, Dangin Puri Klod, Denpasar Tim., Kota Denpasar, Bali 80234, Indonesia', '115.225379', '-8.672668', '085737364736', 'Tempat yoga paling asik di Bali', 150000, 1);
+(1, 2, 1, 'Awesome Gym', 'Jl. Gn. Agung No.225, Padangsambian GG1,  Kota Denpasar, Bali 80118, Indonesia', '115.190703', '-8.651285', '085737353568', 'Gym terbaik dan terhebat disekitar denpasar\r\nhahahaha', 100000, 1),
+(2, 3, 2, 'Tempat Yoga Asik', 'Jl. Raya Puputan No.74, Dangin Puri Klod, Denpasar Tim., Kota Denpasar, Bali 80234, Indonesia', '115.225379', '-8.672668', '085737364736', 'Tempat yoga paling asik di Bali', 150000, 1),
+(3, 4, 1, 'Gym Bedebah', 'Jl. Gajah Mada No.23, Dauh Puri Kangin, Denpasar Bar., Kota Denpasar, Bali 80232, Indonesia', '115.214220', '-8.655782', '0857373648', 'Gym paling awesome yang pernah ada', 200000, 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +109,10 @@ CREATE TABLE `gym_facility` (
 
 INSERT INTO `gym_facility` (`id`, `facility_id`, `gym_id`) VALUES
 (5, 1, 1),
-(6, 2, 1);
+(6, 2, 1),
+(7, 5, 3),
+(8, 4, 3),
+(9, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -130,7 +135,8 @@ INSERT INTO `images` (`id`, `gym_id`, `file`) VALUES
 (11, 1, 'ba97eafd36eaa445f1a794521db7ab4e.jpg'),
 (12, 1, 'a9fa60d08cb4adb43be0573f471e8d28.jpg'),
 (13, 1, 'b8fb4844a7f2ac8be8f422e1968dcda7.jpg'),
-(14, 1, '0b8c245f5d0b260ddc13c8bbc6e88216.jpg');
+(14, 1, '0b8c245f5d0b260ddc13c8bbc6e88216.jpg'),
+(15, 3, '9592a8f234ae0f7a61b31be93dc9b055.jpg');
 
 -- --------------------------------------------------------
 
@@ -155,7 +161,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `fullname`, `username`, `password`, `no_hp`, `type`, `status`) VALUES
 (1, 'Administrator', 'admin', '7fef6171469e80d32c0559f88b377245', '08573737437', 1, 1),
 (2, 'Awesome Gym', 'operator', '100d9d509794db4ff7fd800bdc659dad', '085737353568', 2, 1),
-(3, 'Tempat Yoga Asik', 'yoga', '8bd400413bffe4af08d8a6608fda8bad', '085737364736', 2, 1);
+(3, 'Tempat Yoga Asik', 'yoga', '8bd400413bffe4af08d8a6608fda8bad', '085737364736', 2, 1),
+(4, 'Gym Bedebah', 'bedebah', 'b0ecd469e3c5eb6dad0cc0d7cde81f30', '0857373648', 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -210,27 +217,27 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `facility`
 --
 ALTER TABLE `facility`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `gym`
 --
 ALTER TABLE `gym`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `gym_facility`
 --
 ALTER TABLE `gym_facility`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

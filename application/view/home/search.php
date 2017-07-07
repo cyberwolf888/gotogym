@@ -10,6 +10,32 @@
                 </ul>
                 <!-- END breadcrumb block -->
 
+                <!-- Filter Box -->
+                <div class="uk-grid">
+                    <div class="uk-width-1-4">
+                        <div class="uk-panel uk-panel-box">
+                            <h3 class="uk-panel-title"><i class="uk-icon-bullhorn"></i> Search Sorting</h3>
+                            <select name="sorting" id="#sorting" class="sorting">
+                                <option value="1">Termurah</option>
+                                <option value="2">Termahal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uk-width-3-4">
+                        <div class="uk-panel uk-panel-box">
+                            <h3 class="uk-panel-title"><i class="uk-icon-bullhorn"></i> Search Filter</h3>
+                            <div class="uk-grid">
+                                <?php $facility = new \Mini\Model\Facility(); ?>
+                                <?php foreach ($facility->getAll() as $f): ?>
+                                    <div class="uk-width-1-6">
+                                        <input type="checkbox" name="facility" value="<?= $f->id ?>" id="facil_<?= $f->id ?>" onclick="insertFacility(<?= $f->id ?>)"> <?= $f->label ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Filter Box -->
                 <div id="system-message-container"></div>
 
 
@@ -22,7 +48,7 @@
                 </div>
 
                 <!-- START Article Blog block -->
-                <div class="uk-grid" data-uk-grid-match="" data-uk-grid-margin="">
+                <div class="uk-grid" data-uk-grid-match="" data-uk-grid-margin="" id="result" >
 
                     <?php foreach ($search as $row): ?>
                     <?php $image = \Mini\Model\Gym::getImage($row->id); ?>
@@ -54,6 +80,10 @@
                     </div>
                     <?php endforeach; ?>
 
+                </div>
+                <div id="loading" style="display: none;">
+                    <br><br>
+                    <center><h3>Loading....</h3></center>
                 </div>
                 <!-- END Article Blog block -->
             </main>

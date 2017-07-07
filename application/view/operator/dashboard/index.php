@@ -87,7 +87,7 @@
                             <div class="col-md-6">
 
                                 <div class="form-group form-md-line-input">
-                                    <input type="text" name="alamat" id="alamat" placeholder="" class="form-control" value="<?= $_SESSION['gym']->alamat ?>" readonly required>
+                                    <input type="text" name="alamat" id="alamat" placeholder="" class="form-control" value="<?= $_SESSION['gym']->alamat ?>" required>
                                     <label for="label">Alamat</label>
                                 </div>
 

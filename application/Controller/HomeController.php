@@ -2,7 +2,7 @@
 
 namespace Mini\Controller;
 
-
+use PDO;
 use Mini\Core\Controller;
 use Mini\Model\Gym;
 use Mini\Model\Users;
@@ -60,6 +60,7 @@ class HomeController extends Controller
             'header'=>'view/_templates/home_header.php',
             'content'=>'view/home/search.php',
             'footer'=>'view/_templates/home_footer.php',
+            'page_script'=> 'view/home/script/search_page_script.php',
         ],[
             'search'=>$search
         ]);
@@ -110,5 +111,53 @@ class HomeController extends Controller
     {
         unset($_SESSION['user']);
         header('location: ' . URL . 'home/login');
+    }
+
+    public function ajaxSearch()
+    {
+        $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
+        $db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET, DB_USER, DB_PASS, $options);
+        $keyword = $_POST['keyword'];
+        $category = $_POST['category'];
+
+        $_keyw = explode(' ', $keyword);
+        $search = null;
+        foreach ($_keyw as $key){
+            $search.= 'fullname LIKE "%'.$key.'%" OR ';
+        }
+        $search = substr($search, 0, -4);
+
+        $cat = '';
+        if($category!=0){
+            $cat = ' AND category_id = '.$category;
+        }
+
+        $order = "ORDER BY price ASC";
+        if($_POST['sorting']==2){
+            $order = "ORDER BY price DESC";
+        }
+
+        $sql = "SELECT * FROM gym WHERE ".$search.$cat." AND status = 1 $order";
+
+        if(isset($_POST['facility']) && count($_POST['facility'])>0){
+            $facility = $_POST['facility'];
+            $_facility = "";
+            foreach ($facility as $key => $value) {
+                $_facility.= 'facility_id="'.$value.'" OR ';
+            }
+            $_facility = substr($_facility,0,-3);
+            $sql = "SELECT f.facility_id,f.gym_id,g.* FROM gym_facility AS f JOIN gym AS g ON g.id=f.gym_id WHERE ".$search.$cat." AND $_facility AND status = 1  GROUP BY id $order";
+        }
+
+        $query = $db->prepare($sql);
+        $query->execute([]);
+
+        $reseult = $query->fetchAll();
+
+        $this->view([
+            'content'=>'view/home/ajaxSearch.php',
+        ],[
+            'model'=>$reseult
+        ]);
     }
 }

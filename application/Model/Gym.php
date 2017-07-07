@@ -49,7 +49,7 @@ class Gym extends Model
             $cat = ' AND category_id = '.$category;
         }
 
-        $sql = "SELECT * FROM $this->table WHERE ".$search.$cat." AND status = 1";
+        $sql = "SELECT * FROM $this->table WHERE ".$search.$cat." AND status = 1 ORDER BY price ASC";
         $query = $this->db->prepare($sql);
         $query->execute([]);
 
