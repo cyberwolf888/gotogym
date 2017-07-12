@@ -176,6 +176,13 @@ class AdminController extends Controller
 
         header('location: ' . URL . 'admin/facility');
     }
+
+    public function delete_facility($id)
+    {
+        $facility = new Facility();
+        $facility->delete($id);
+        header('location: ' . URL . 'admin/facility');
+    }
     /* -------------------------------------------------------------------------------------------------------------- */
 
 

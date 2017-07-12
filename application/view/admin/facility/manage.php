@@ -90,7 +90,7 @@
                             <td class="center" width="150" >
                                 <a href="#" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
                                 <a href="<?= URL ?>admin/edit_facility/<?= $row->id ?>" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a>
+                                <a href="<?= URL ?>admin/delete_facility/<?= $row->id ?>" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $no++ ?>
