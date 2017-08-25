@@ -14,8 +14,10 @@
                 <div id="system-message-container"></div>
 
 
-                <h1 style="margin-top: 0;"><?= $model->fullname ?></h1>
-
+                <h1 style="margin-top: 0;margin-bottom: 0;"><?= $model->fullname ?></h1>
+                <h4 style="margin-top: 10px;">
+                    <?= $model->alamat ?>
+                </h4>
                 <!-- START Article Blog block -->
                 <article class="uk-article">
                     <h3>

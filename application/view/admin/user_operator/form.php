@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group form-md-line-input">
-                            <input type="text" name="no_hp" id="no_hp" placeholder="" class="form-control" value="<?= isset($model) ? $model->no_hp : null ?>" required>
+                            <input type="number" name="no_hp" id="no_hp" placeholder="" class="form-control" value="<?= isset($model) ? $model->no_hp : null ?>" required>
                             <label for="no_hp">No HP</label>
                         </div>
 

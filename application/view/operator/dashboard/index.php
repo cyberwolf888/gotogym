@@ -57,7 +57,7 @@
                                 </div>
 
                                 <div class="form-group form-md-line-input">
-                                    <input type="text" name="telp" id="telp" placeholder="" class="form-control" value="<?= $_SESSION['gym']->telp ?>" required>
+                                    <input type="number" name="telp" id="telp" placeholder="" class="form-control" value="<?= $_SESSION['gym']->telp ?>" required>
                                     <label for="telp">Telephone</label>
                                 </div>
 

@@ -109,6 +109,14 @@ class AdminController extends Controller
 
         header('location: ' . URL . 'admin/category');
     }
+
+    public function delete_category($id)
+    {
+        $category = new Category();
+        $model = $category->delete($id);
+
+        header('location: ' . URL . 'admin/category');
+    }
     /* -------------------------------------------------------------------------------------------------------------- */
 
 
