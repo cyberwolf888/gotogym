@@ -158,6 +158,12 @@
                         <span class="title">Facility</span>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="<?= URL;?>operator/category" class="nav-link ">
+                        <i class="icon-book-open"></i>
+                        <span class="title">Category</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="<?= URL;?>operator/images" class="nav-link ">
                         <i class="icon-rocket"></i>

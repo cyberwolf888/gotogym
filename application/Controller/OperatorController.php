@@ -4,6 +4,7 @@ namespace Mini\Controller;
 
 use Mini\Core\Controller;
 use Mini\Model\Gym;
+use Mini\Model\GymCategory;
 use Mini\Model\GymFacility;
 use Mini\Model\Images;
 use Mini\Model\Users;
@@ -124,6 +125,60 @@ class OperatorController extends Controller
     }
     /* -------------------------------------------------------------------------------------------------------------- */
 
+
+    /*
+     *  Category
+     */
+    public function category()
+    {
+        $model = new GymCategory();
+        $this->view([
+            'header' => 'view/_templates/operator_header.php',
+            'content' => 'view/operator/category/manage.php',
+            'footer' => 'view/_templates/operator_footer.php',
+            'plugin_css' => 'view/operator/category/script/manage_plugin_css.php',
+            'plugin_script' => 'view/operator/category/script/manage_plugin_script.php',
+            'page_script' => 'view/operator/category/script/manage_page_script.php'
+        ], [
+            'model' => $model->manage($_SESSION['gym']->id)
+        ]);
+    }
+
+    public function create_category()
+    {
+        $this->view([
+            'header' => 'view/_templates/operator_header.php',
+            'content' => 'view/operator/category/form.php',
+            'footer' => 'view/_templates/operator_footer.php'
+        ]);
+    }
+
+    public function process_create_category()
+    {
+        if (isset($_POST['category_id'])) {
+            $model = new GymCategory();
+            $check = $model->getAll(['gym_id'=>$_SESSION['gym']->id,'category_id'=>$_POST['category_id']]);
+            if(count($check)==0){
+                $model->add([
+                    'category_id' => $_POST['category_id'],
+                    'gym_id' => $_SESSION['gym']->id
+                ]);
+                header('location: ' . URL . 'operator/category');
+            }else{
+                $_SESSION['failed'] = true;
+                header('location: ' . URL . 'operator/create_category');
+            }
+        }
+
+    }
+
+    public function delete_category($id)
+    {
+        $model = new GymCategory();
+        $model->delete($id);
+        header('location: ' . URL . 'operator/category');
+    }
+    /* -------------------------------------------------------------------------------------------------------------- */
 
     /*
      *  Dashboard

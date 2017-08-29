@@ -16,7 +16,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="<?= URL ?>operator/facility">Facility</a>
+        <a href="<?= URL ?>operator/category">Category</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -32,11 +32,11 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-green"></i>
-                    <span class="caption-subject font-green sbold uppercase">Manage Facility</span>
+                    <span class="caption-subject font-green sbold uppercase">Manage Category</span>
                 </div>
                 <div class="actions">
                     <div class="btn-group btn-group-devided">
-                        <a href="<?= URL ?>operator/create_facility" class="btn btn-circle green">
+                        <a href="<?= URL ?>operator/create_category" class="btn btn-circle green">
                             <i class="fa fa-plus"></i> Add new data
                         </a>
                     </div>
@@ -88,7 +88,7 @@
                             <td width="30"> <?= $no ?> </td>
                             <td> <?= $row->label ?> </td>
                             <td class="center" width="50" >
-                                <a href="<?= URL.'operator/delete_facility/'.$row->id ?>" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a>
+                                <a href="<?= URL.'operator/delete_category/'.$row->id ?>" class="btn red-mint btn-xs"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $no++ ?>

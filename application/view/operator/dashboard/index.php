@@ -52,11 +52,6 @@
                                 </div>
 
                                 <div class="form-group form-md-line-input">
-                                    <input type="text" name="category_id" id="category_id" placeholder="" class="form-control" value="<?= \Mini\Model\Gym::getCategory($_SESSION['gym']->category_id) ?>" readonly>
-                                    <label for="category_id">Category</label>
-                                </div>
-
-                                <div class="form-group form-md-line-input">
                                     <input type="number" name="telp" id="telp" placeholder="" class="form-control" value="<?= $_SESSION['gym']->telp ?>" required>
                                     <label for="telp">Telephone</label>
                                 </div>

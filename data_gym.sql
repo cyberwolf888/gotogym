@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07 Jul 2017 pada 09.02
+-- Generation Time: 29 Agu 2017 pada 18.47
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -37,8 +37,7 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`id`, `label`) VALUES
 (1, 'Fitness Center'),
-(2, 'Yoga'),
-(3, 'Aerobik');
+(2, 'Yoga');
 
 -- --------------------------------------------------------
 
@@ -58,9 +57,7 @@ CREATE TABLE `facility` (
 INSERT INTO `facility` (`id`, `label`) VALUES
 (1, 'Free Wifi'),
 (2, 'Jacuzi'),
-(3, 'Swimming Pool'),
-(4, 'Smoking Area'),
-(5, 'Sauna');
+(3, 'Swimming Pool');
 
 -- --------------------------------------------------------
 
@@ -71,7 +68,6 @@ INSERT INTO `facility` (`id`, `label`) VALUES
 CREATE TABLE `gym` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
   `fullname` varchar(100) DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `longitude` varchar(100) DEFAULT NULL,
@@ -86,10 +82,30 @@ CREATE TABLE `gym` (
 -- Dumping data untuk tabel `gym`
 --
 
-INSERT INTO `gym` (`id`, `user_id`, `category_id`, `fullname`, `alamat`, `longitude`, `latitude`, `telp`, `description`, `price`, `status`) VALUES
-(1, 2, 1, 'Awesome Gym', 'Jl. Gn. Agung No.225, Padangsambian GG1,  Kota Denpasar, Bali 80118, Indonesia', '115.190703', '-8.651285', '085737353568', 'Gym terbaik dan terhebat disekitar denpasar\r\nhahahaha', 100000, 1),
-(2, 3, 2, 'Tempat Yoga Asik', 'Jl. Raya Puputan No.74, Dangin Puri Klod, Denpasar Tim., Kota Denpasar, Bali 80234, Indonesia', '115.225379', '-8.672668', '085737364736', 'Tempat yoga paling asik di Bali', 150000, 1),
-(3, 4, 1, 'Gym Bedebah', 'Jl. Gajah Mada No.23, Dauh Puri Kangin, Denpasar Bar., Kota Denpasar, Bali 80232, Indonesia', '115.214220', '-8.655782', '0857373648', 'Gym paling awesome yang pernah ada', 200000, 1);
+INSERT INTO `gym` (`id`, `user_id`, `fullname`, `alamat`, `longitude`, `latitude`, `telp`, `description`, `price`, `status`) VALUES
+(1, 2, 'Awesome Gym', 'Jl. Gn. Agung No.225, Padangsambian GG1,  Kota Denpasar, Bali 80118, Indonesia', '115.190703', '-8.651285', '085737353568', 'Gym terbaik dan terhebat disekitar denpasar\r\nhahahaha', 100000, 1),
+(2, 3, 'Tempat Yoga Asik', 'Jl. Raya Puputan No.74, Dangin Puri Klod, Denpasar Tim., Kota Denpasar, Bali 80234, Indonesia', '115.225379', '-8.672668', '085737364736', 'Tempat yoga paling asik di Bali', 150000, 1),
+(3, 4, 'Gym Bedebah', 'Jl. Gajah Mada No.23, Dauh Puri Kangin, Denpasar Bar., Kota Denpasar, Bali 80232, Indonesia', '115.214220', '-8.655782', '0857373648', 'Gym paling awesome yang pernah ada', 200000, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `gym_category`
+--
+
+CREATE TABLE `gym_category` (
+  `id` int(11) NOT NULL,
+  `gym_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `gym_category`
+--
+
+INSERT INTO `gym_category` (`id`, `gym_id`, `category_id`) VALUES
+(1, 1, 1),
+(3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -109,10 +125,11 @@ CREATE TABLE `gym_facility` (
 
 INSERT INTO `gym_facility` (`id`, `facility_id`, `gym_id`) VALUES
 (5, 1, 1),
-(6, 2, 1),
 (7, 5, 3),
 (8, 4, 3),
-(9, 1, 3);
+(9, 1, 3),
+(10, 2, 1),
+(11, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -187,6 +204,12 @@ ALTER TABLE `gym`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gym_category`
+--
+ALTER TABLE `gym_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `gym_facility`
 --
 ALTER TABLE `gym_facility`
@@ -212,22 +235,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `facility`
 --
 ALTER TABLE `facility`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `gym`
 --
 ALTER TABLE `gym`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `gym_category`
+--
+ALTER TABLE `gym_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `gym_facility`
 --
 ALTER TABLE `gym_facility`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `images`
 --

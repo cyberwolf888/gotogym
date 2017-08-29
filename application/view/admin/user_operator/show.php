@@ -56,12 +56,6 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h4><small>Category</small></h4>
-                                    <h4><?= \Mini\Model\Gym::getCategory($gym->category_id) ?></h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <h4><small>Telp</small></h4>
                                     <h4><?= $gym->telp ?></h4>
                                 </td>

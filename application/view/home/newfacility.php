@@ -43,7 +43,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <h4 class="tm-workouts-line tm-uppercase"><?= \Mini\Model\Gym::getCategory($row->category_id) ?></h4>
+                                    <h4 class="tm-workouts-line tm-uppercase"><?php
+                                        $category=new \Mini\Model\GymCategory();
+                                        $get_c = $category->getAll(['gym_id'=>$row->id]);
+                                        if(count($get_c)>0):
+                                            $print = "";
+                                            foreach ($get_c as $_c){
+                                                $print.= \Mini\Model\Gym::getCategory($_c->category_id).', ';
+                                            }
+                                            echo substr($print, 0, -2);
+                                            ?>
+
+                                        <?php else: ?>
+                                            Operator belum memilih category
+                                        <?php endif; ?></h4>
                                     <h3 class="tm-workouts-subline tm-uppercase"><?= $row->fullname ?></h3>
                                     <div class="jcomments-links">
                                         <a class="readmore-link" href="<?= URL.'home/detail/'.$row->id ?>" title="5 Unique Workauts to Improve your Deadlift">Read more ...</a>

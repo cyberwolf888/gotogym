@@ -21,7 +21,20 @@
                 <!-- START Article Blog block -->
                 <article class="uk-article">
                     <h3>
-                        <?= \Mini\Model\Gym::getCategory($model->category_id) ?>
+                        <?php
+                            $category=new \Mini\Model\GymCategory();
+                            $get_c = $category->getAll(['gym_id'=>$model->id]);
+                            if(count($get_c)>0):
+                                $print = "";
+                                foreach ($get_c as $_c){
+                                    $print.= \Mini\Model\Gym::getCategory($_c->category_id).', ';
+                                }
+                                echo substr($print, 0, -2);
+                        ?>
+
+                        <?php else: ?>
+                            Operator belum memilih category
+                        <?php endif; ?>
                     </h3>
                     <div>
                         <div class="uk-grid">
