@@ -342,7 +342,6 @@ class AdminController extends Controller
                 ]);
                 $gym->add([
                     'user_id'=>$user_id,
-                    'category_id'=>$_POST['category_id'],
                     'fullname'=>$_POST['fullname'],
                     'status'=>3
                 ]);

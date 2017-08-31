@@ -44,16 +44,6 @@
                         <?= $this->flash('error_user_operator') ?>
 
                         <div class="form-group form-md-line-input">
-                            <select name="category_id" id="category_id" class="form-control" required>
-                                <?php $category = new \Mini\Model\Category(); ?>
-                                <?php foreach ($category->getAll() as $cat): ?>
-                                    <option value="<?= $cat->id ?>" <?= isset($model) && $gym->category_id == $cat->id ? 'selected' : '' ?>><?= $cat->label ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <label for="status">Status</label>
-                        </div>
-
-                        <div class="form-group form-md-line-input">
                             <input type="text" name="fullname" id="fullname" placeholder="" class="form-control" value="<?= isset($model) ? $model->fullname : null ?>" required>
                             <label for="fullname">Full Name</label>
                         </div>
